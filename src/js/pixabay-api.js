@@ -1,13 +1,13 @@
 import axios from "axios";
 
-export function getImagesByQuery(query) {
+export function getImagesByQuery(query, page = 1) {
     const params = {
         key: "51362272-d48daa27a05223f6096b84303",
         q: query,
         image_type: "photo",
         orientation: "horizontal",
         safesearch: true,
-        page: 1,
+        page,
         per_page: 15,
     };
 
