@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function getImagesByQuery(query, page = 1) {
+export async function getImagesByQuery(query, page = 1) {
     const params = {
         key: "51362272-d48daa27a05223f6096b84303",
         q: query,
@@ -10,12 +10,13 @@ export function getImagesByQuery(query, page = 1) {
         page,
         per_page: 15,
     };
+    try {
+        const response = await axios.get("https://pixabay.com/api/", { params });
+        return response.data;
 
-     return axios.get("https://pixabay.com/api/", { params })
-        .then(response =>  response.data)
-        .catch(err => {
-            console.log(err);
+    } catch (err) {
+        console.log(err);
              throw err;
-        });
+}
 }
 
